@@ -123,6 +123,18 @@
           }
         }
       ]
+    },
+
+    {
+      "id": "thankyou",
+      "title": "Thank you",
+      "elements": [
+        {
+          "id": "thankyouMessage",
+          "type": "",
+          "label": "Thank you for your response"
+        }
+      ]
     }
   ]
 }

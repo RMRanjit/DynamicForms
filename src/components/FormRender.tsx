@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   Select,
@@ -17,7 +17,6 @@ import {
   Paper,
   Grid,
   List,
-  ListItem,
   ListItemText,
   SelectChangeEvent,
   ListItemButton,
@@ -25,6 +24,9 @@ import {
   Step,
   StepLabel,
   StepButton,
+  useMediaQuery,
+  Theme,
+  useTheme,
 } from "@mui/material";
 import formConfig from "../config/form-config.json";
 import StarRating from "./StarRating";
@@ -75,8 +77,14 @@ const FormRender: React.FC = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [sectionValidity, setSectionValidity] = useState<boolean[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCurrentResponsesModalOpen, setIsCurrentResponsesModalOpen] =
+    useState(false);
+  const [isSubmissionModalOpen, setIsSubmissionModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   useEffect(() => {
     setSectionValidity(new Array(config.sections.length).fill(false));
@@ -368,35 +376,35 @@ const FormRender: React.FC = () => {
     if (isValid && currentSectionIndex === config.sections.length - 1) {
       // All sections are valid and we're on the last section
       setIsSubmitted(true);
-      setIsModalOpen(true);
+      setIsSubmissionModalOpen(true);
       // Here you would typically send the form data to a server
       console.log(formData);
     }
   };
 
-  const currentSection = config.sections[currentSectionIndex];
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleOpenCurrentResponsesModal = () => {
+    setIsCurrentResponsesModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    if (isSubmitted) {
-      // Reset the form after closing the modal if it was a submission
-      setFormData({});
-      setCurrentSectionIndex(0);
-      setSectionValidity(new Array(config.sections.length).fill(false));
-      setIsSubmitted(false);
-    }
+  const handleCloseCurrentResponsesModal = () => {
+    setIsCurrentResponsesModalOpen(false);
   };
 
-  const renderResponseModal = () => (
+  const handleCloseSubmissionModal = () => {
+    setIsSubmissionModalOpen(false);
+    // Reset the form after closing the submission modal
+    setFormData({});
+    setCurrentSectionIndex(0);
+    setSectionValidity(new Array(config.sections.length).fill(false));
+    setIsSubmitted(false);
+  };
+
+  const renderCurrentResponsesModal = () => (
     <Modal
-      open={isModalOpen}
-      onClose={handleCloseModal}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      open={isCurrentResponsesModalOpen}
+      onClose={handleCloseCurrentResponsesModal}
+      aria-labelledby="current-responses-modal-title"
+      aria-describedby="current-responses-modal-description"
     >
       <Box
         sx={{
@@ -411,27 +419,82 @@ const FormRender: React.FC = () => {
           p: 4,
         }}
       >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {isSubmitted
-            ? "Form Submitted Successfully"
-            : "Current Form Responses"}
+        <Typography
+          id="current-responses-modal-title"
+          variant="h6"
+          component="h2"
+        >
+          Current Form Responses
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+        <Typography id="current-responses-modal-description" sx={{ mt: 2 }}>
           <pre>{JSON.stringify(formData, null, 2)}</pre>
         </Typography>
-        <Button onClick={handleCloseModal} sx={{ mt: 2 }}>
-          {isSubmitted ? "Close and Reset Form" : "Close"}
+        <Button onClick={handleCloseCurrentResponsesModal} sx={{ mt: 2 }}>
+          Close
         </Button>
       </Box>
     </Modal>
   );
 
+  const renderSubmissionModal = () => (
+    <Modal
+      open={isSubmissionModalOpen}
+      onClose={handleCloseSubmissionModal}
+      aria-labelledby="submission-modal-title"
+      aria-describedby="submission-modal-description"
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 400,
+          bgcolor: "background.paper",
+          border: "2px solid #000",
+          boxShadow: 24,
+          p: 4,
+        }}
+      >
+        <Typography id="submission-modal-title" variant="h6" component="h2">
+          Form Submitted Successfully
+        </Typography>
+        <Typography id="submission-modal-description" sx={{ mt: 2 }}>
+          <pre>{JSON.stringify(formData, null, 2)}</pre>
+        </Typography>
+        <Button onClick={handleCloseSubmissionModal} sx={{ mt: 2 }}>
+          Close and Reset Form
+        </Button>
+      </Box>
+    </Modal>
+  );
+
+  const renderResponseButton = () => (
+    <Button
+      variant="outlined"
+      color="primary"
+      onClick={handleOpenCurrentResponsesModal}
+      fullWidth={isSmallScreen}
+      style={
+        isSmallScreen
+          ? { marginTop: "20px" }
+          : { float: "right", marginTop: "-45px" }
+      }
+    >
+      Show Current Responses
+    </Button>
+  );
+
   const renderStepper = () => (
-    <Stepper activeStep={currentSectionIndex} nonLinear>
+    <Stepper
+      activeStep={currentSectionIndex}
+      nonLinear
+      orientation={isSmallScreen ? "vertical" : "horizontal"}
+    >
       {config.sections.map((section, index) => (
         <Step key={section.id} completed={sectionValidity[index]}>
           <StepButton onClick={() => handleSectionChange(index)}>
-            {section.title}
+            {isSmallScreen ? section.title.slice(0, 10) + "..." : section.title}
           </StepButton>
         </Step>
       ))}
@@ -442,21 +505,16 @@ const FormRender: React.FC = () => {
     <Container maxWidth="lg">
       <Paper
         elevation={3}
-        style={{ padding: "20px", marginTop: "20px", position: "relative" }}
+        style={{ padding: isSmallScreen ? "10px" : "20px", marginTop: "20px" }}
       >
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={handleOpenModal}
-          style={{ position: "absolute", top: "20px", right: "20px" }}
-        >
-          Show Current Responses
-        </Button>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12}>
             <Typography variant="h4" gutterBottom>
               {config.title}
             </Typography>
+            {!isSmallScreen && !isSubmitted && renderResponseButton()}
+          </Grid>
+          <Grid item xs={12} md={isSmallScreen || isMediumScreen ? 12 : 8}>
             <form onSubmit={handleSubmit}>
               <Typography variant="h5" gutterBottom>
                 {config.sections[currentSectionIndex].title}
@@ -501,33 +559,37 @@ const FormRender: React.FC = () => {
               </Grid>
             </form>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper elevation={2} style={{ padding: "10px" }}>
-              <Typography variant="h6" gutterBottom>
-                Sections
-              </Typography>
-              <List>
-                {config.sections.map((section, index) => (
-                  <ListItemButton
-                    key={section.id}
-                    onClick={() => handleSectionChange(index)}
-                    selected={index === currentSectionIndex}
-                  >
-                    <ListItemText
-                      primary={section.title}
-                      style={{
-                        color: sectionValidity[index] ? "green" : "inherit",
-                      }}
-                    />
-                  </ListItemButton>
-                ))}
-              </List>
-            </Paper>
-          </Grid>
+          {!isSmallScreen && !isMediumScreen && (
+            <Grid item xs={12} md={4}>
+              <Paper elevation={2} style={{ padding: "10px" }}>
+                <Typography variant="h6" gutterBottom>
+                  Sections
+                </Typography>
+                <List>
+                  {config.sections.map((section, index) => (
+                    <ListItemButton
+                      key={section.id}
+                      onClick={() => handleSectionChange(index)}
+                      selected={index === currentSectionIndex}
+                    >
+                      <ListItemText
+                        primary={section.title}
+                        style={{
+                          color: sectionValidity[index] ? "green" : "inherit",
+                        }}
+                      />
+                    </ListItemButton>
+                  ))}
+                </List>
+              </Paper>
+            </Grid>
+          )}
         </Grid>
         <Box sx={{ mt: 4 }}>{renderStepper()}</Box>
+        {isSmallScreen && !isSubmitted && renderResponseButton()}
       </Paper>
-      {renderResponseModal()}
+      {renderCurrentResponsesModal()}
+      {renderSubmissionModal()}
     </Container>
   );
 };
