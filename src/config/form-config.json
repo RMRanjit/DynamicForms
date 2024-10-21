@@ -1,0 +1,128 @@
+{
+  "title": "Medicaid Application",
+  "sections": [
+    {
+      "id": "personalInfo",
+      "title": "Personal Information",
+      "elements": [
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Full Name",
+          "placeholder": "Enter your full name",
+          "validation": {
+            "required": true,
+            "min": 2,
+            "max": 50
+          }
+        },
+        {
+          "id": "email",
+          "type": "email",
+          "label": "Email Address",
+          "placeholder": "Enter your email",
+          "validation": {
+            "required": true,
+            "email": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Feedback",
+      "elements": [
+        {
+          "id": "rating",
+          "type": "custom",
+          "component": "StarRating",
+          "label": "Rate your experience",
+          "validation": {
+            "required": true,
+            "min": 1,
+            "max": 5
+          }
+        },
+        {
+          "id": "commentsRating",
+          "type": "textarea",
+          "label": "Please provide any feedback on what influenced your rating",
+          "placeholder": "Please provide any additional feedback",
+          "validation": {
+            "max": 500
+          }
+        }
+      ]
+    },
+    {
+      "id": "professionalInfo",
+      "title": "Professional Information",
+      "elements": [
+        {
+          "id": "hasExperience",
+          "type": "radio",
+          "label": "Do you have prior experience?",
+          "options": [
+            { "value": "yes", "label": "Yes" },
+            { "value": "no", "label": "No" }
+          ],
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "id": "experienceYears",
+          "type": "select",
+          "label": "Years of Experience",
+          "options": [
+            { "value": "1-3", "label": "1-3 years" },
+            { "value": "4-6", "label": "4-6 years" },
+            { "value": "7+", "label": "7+ years" }
+          ],
+          "validation": {
+            "required": true
+          },
+          "showIf": {
+            "field": "hasExperience",
+            "value": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "elements": [
+        {
+          "id": "skills",
+          "type": "checkbox",
+          "label": "Select your skills",
+          "options": [
+            { "value": "javascript", "label": "JavaScript" },
+            { "value": "react", "label": "React" },
+            { "value": "node", "label": "Node.js" },
+            { "value": "python", "label": "Python" }
+          ],
+          "validation": {
+            "min": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "additionalInfo",
+      "title": "Additional Information",
+      "elements": [
+        {
+          "id": "commentsAdditional",
+          "type": "rich-text",
+          "label": "Additional Comments",
+          "placeholder": "Any other information you'd like to share",
+          "validation": {
+            "max": 500
+          }
+        }
+      ]
+    }
+  ]
+}
