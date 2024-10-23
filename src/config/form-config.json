@@ -2,125 +2,2717 @@
   "title": "Medicaid Application",
   "sections": [
     {
-      "id": "personalInfo",
-      "title": "Personal Information",
-      "elements": [
+      "id": "identifyingInfo",
+      "title": "Identifying Information",
+      "subsections": [
         {
-          "id": "name",
-          "type": "text",
-          "label": "Full Name",
-          "placeholder": "Enter your full name",
-          "validation": {
-            "required": true,
-            "min": 2,
-            "max": 50
-          }
+          "id": "medicaidPayment",
+          "title": "Medicaid Payment",
+          "elements": [
+            {
+              "id": "receivePayments",
+              "type": "radio",
+              "label": "Will you receive payments directly from Medicaid?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "id": "email",
-          "type": "email",
-          "label": "Email Address",
-          "placeholder": "Enter your email",
-          "validation": {
-            "required": true,
-            "email": true
-          }
-        }
-      ]
-    },
-    {
-      "id": "feedback",
-      "title": "Feedback",
-      "elements": [
-        {
-          "id": "rating",
-          "type": "custom",
-          "component": "StarRating",
-          "label": "Rate your experience",
-          "validation": {
-            "required": true,
-            "min": 1,
-            "max": 5
-          }
+          "id": "generalInfo",
+          "title": "General Information",
+          "elements": [
+            {
+              "id": "titleOrDegree",
+              "type": "text",
+              "label": "Title or Degree",
+              "placeholder": "Enter your Title or Degree",
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "firstName",
+              "type": "text",
+              "label": "First Name",
+              "placeholder": "Enter your First Name",
+              "validation": {
+                "required": true,
+                "min": 2,
+                "max": 50,
+                "errorMessages": {
+                  "required": "First name is required",
+                  "min": "First name must be at least 2 characters",
+                  "max": "First name cannot exceed 50 characters"
+                }
+              }
+            },
+            {
+              "id": "lastName",
+              "type": "text",
+              "label": "Last Name",
+              "placeholder": "Enter your Last Name",
+              "validation": {
+                "required": true,
+                "min": 2,
+                "max": 50,
+                "errorMessages": {
+                  "required": "Last name is required",
+                  "min": "Last name must be at least 2 characters",
+                  "max": "Last name cannot exceed 50 characters"
+                }
+              }
+            },
+            {
+              "id": "middleName",
+              "type": "text",
+              "label": "Middle Name",
+              "placeholder": "Enter your Middle Name",
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "gender",
+              "type": "select",
+              "label": "Gender",
+              "options": [
+                { "value": "Male", "label": "Male" },
+                { "value": "Female", "label": "Female" },
+                { "value": "Decline", "label": "Decline to answer" }
+              ],
+              "validation": {
+                "required": true,
+                "errorMessages": {
+                  "required": "Gender is required"
+                }
+              }
+            },
+
+            {
+              "id": "dateOfBirth",
+              "type": "date",
+              "label": "Date of Birth",
+              "validation": {
+                "required": true,
+                "date": {
+                  "maxDate": "today",
+                  "minDate": 6570
+                },
+                "errorMessages": {
+                  "required": "Date of birth is required",
+                  "date": "Date of birth cannot be in the future"
+                }
+              }
+            },
+            {
+              "id": "countryofBirth",
+              "type": "select",
+              "label": "Country of Birth",
+              "options": [
+                { "value": "AF", "label": "Afghanistan" },
+                { "value": "AL", "label": "Albania" },
+                { "value": "DZ", "label": "Algeria" },
+                { "value": "AS", "label": "American Samoa" },
+                { "value": "AD", "label": "Andorra" },
+                { "value": "AO", "label": "Angola" },
+                { "value": "AI", "label": "Anguilla" },
+                { "value": "AQ", "label": "Antarctica" },
+                { "value": "AG", "label": "Antigua and Barbuda" },
+                { "value": "AR", "label": "Argentina" },
+                { "value": "AM", "label": "Armenia" },
+                { "value": "AW", "label": "Aruba" },
+                { "value": "AU", "label": "Australia" },
+                { "value": "AT", "label": "Austria" },
+                { "value": "AZ", "label": "Azerbaijan" },
+                { "value": "BS", "label": "Bahamas" },
+                { "value": "BH", "label": "Bahrain" },
+                { "value": "BD", "label": "Bangladesh" },
+                { "value": "BB", "label": "Barbados" },
+                { "value": "BY", "label": "Belarus" },
+                { "value": "BE", "label": "Belgium" },
+                { "value": "BZ", "label": "Belize" },
+                { "value": "BJ", "label": "Benin" },
+                { "value": "BM", "label": "Bermuda" },
+                { "value": "BT", "label": "Bhutan" },
+                { "value": "BO", "label": "Bolivia" },
+                { "value": "BA", "label": "Bosnia and Herzegovina" },
+                { "value": "BW", "label": "Botswana" },
+                { "value": "BR", "label": "Brazil" },
+                { "value": "IO", "label": "British Indian Ocean Territory" },
+                { "value": "BN", "label": "Brunei Darussalam" },
+                { "value": "BG", "label": "Bulgaria" },
+                { "value": "BF", "label": "Burkina Faso" },
+                { "value": "BI", "label": "Burundi" },
+                { "value": "CV", "label": "Cabo Verde" },
+                { "value": "KH", "label": "Cambodia" },
+                { "value": "CM", "label": "Cameroon" },
+                { "value": "CA", "label": "Canada" },
+                { "value": "KY", "label": "Cayman Islands" },
+                { "value": "CF", "label": "Central African Republic" },
+                { "value": "TD", "label": "Chad" },
+                { "value": "CL", "label": "Chile" },
+                { "value": "CN", "label": "China" },
+                { "value": "CX", "label": "Christmas Island" },
+                { "value": "CC", "label": "Cocos (Keeling) Islands" },
+                { "value": "CO", "label": "Colombia" },
+                { "value": "KM", "label": "Comoros" },
+                { "value": "CG", "label": "Congo" },
+                { "value": "CD", "label": "Congo, Democratic Republic of the" },
+                { "value": "CK", "label": "Cook Islands" },
+                { "value": "CR", "label": "Costa Rica" },
+                { "value": "HR", "label": "Croatia" },
+                { "value": "CU", "label": "Cuba" },
+                { "value": "CW", "label": "Curaçao" },
+                { "value": "CY", "label": "Cyprus" },
+                { "value": "CZ", "label": "Czechia" },
+                { "value": "DK", "label": "Denmark" },
+                { "value": "DJ", "label": "Djibouti" },
+                { "value": "DM", "label": "Dominica" },
+                { "value": "DO", "label": "Dominican Republic" },
+                { "value": "EC", "label": "Ecuador" },
+                { "value": "EG", "label": "Egypt" },
+                { "value": "SV", "label": "El Salvador" },
+                { "value": "GQ", "label": "Equatorial Guinea" },
+                { "value": "ER", "label": "Eritrea" },
+                { "value": "EE", "label": "Estonia" },
+                { "value": "SZ", "label": "Eswatini" },
+                { "value": "ET", "label": "Ethiopia" },
+                { "value": "FK", "label": "Falkland Islands (Malvinas)" },
+                { "value": "FO", "label": "Faroe Islands" },
+                { "value": "FJ", "label": "Fiji" },
+                { "value": "FI", "label": "Finland" },
+                { "value": "FR", "label": "France" },
+                { "value": "GF", "label": "French Guiana" },
+                { "value": "PF", "label": "French Polynesia" },
+                { "value": "TF", "label": "French Southern Territories" },
+                { "value": "GA", "label": "Gabon" },
+                { "value": "GM", "label": "Gambia" },
+                { "value": "GE", "label": "Georgia" },
+                { "value": "DE", "label": "Germany" },
+                { "value": "GH", "label": "Ghana" },
+                { "value": "GI", "label": "Gibraltar" },
+                { "value": "GR", "label": "Greece" },
+                { "value": "GL", "label": "Greenland" },
+                { "value": "GD", "label": "Grenada" },
+                { "value": "GP", "label": "Guadeloupe" },
+                { "value": "GU", "label": "Guam" },
+                { "value": "GT", "label": "Guatemala" },
+                { "value": "GG", "label": "Guernsey" },
+                { "value": "GN", "label": "Guinea" },
+                { "value": "GW", "label": "Guinea-Bissau" },
+                { "value": "GY", "label": "Guyana" },
+                { "value": "HT", "label": "Haiti" },
+                { "value": "HM", "label": "Heard Island and McDonald Islands" },
+                { "value": "VA", "label": "Holy See" },
+                { "value": "HN", "label": "Honduras" },
+                { "value": "HK", "label": "Hong Kong" },
+                { "value": "HU", "label": "Hungary" },
+                { "value": "IS", "label": "Iceland" },
+                { "value": "IN", "label": "India" },
+                { "value": "ID", "label": "Indonesia" },
+                { "value": "IR", "label": "Iran, Islamic Republic of" },
+                { "value": "IQ", "label": "Iraq" },
+                { "value": "IE", "label": "Ireland" },
+                { "value": "IM", "label": "Isle of Man" },
+                { "value": "IL", "label": "Israel" },
+                { "value": "IT", "label": "Italy" },
+                { "value": "JM", "label": "Jamaica" },
+                { "value": "JP", "label": "Japan" },
+                { "value": "JE", "label": "Jersey" },
+                { "value": "JO", "label": "Jordan" },
+                { "value": "KZ", "label": "Kazakhstan" },
+                { "value": "KE", "label": "Kenya" },
+                { "value": "KI", "label": "Kiribati" },
+                {
+                  "value": "KP",
+                  "label": "Korea, Democratic People's Republic of"
+                },
+                { "value": "KR", "label": "Korea, Republic of" },
+                { "value": "KW", "label": "Kuwait" },
+                { "value": "KG", "label": "Kyrgyzstan" },
+                { "value": "LA", "label": "Lao People's Democratic Republic" },
+                { "value": "LV", "label": "Latvia" },
+                { "value": "LB", "label": "Lebanon" },
+                { "value": "LS", "label": "Lesotho" },
+                { "value": "LR", "label": "Liberia" },
+                { "value": "LY", "label": "Libya" },
+                { "value": "LI", "label": "Liechtenstein" },
+                { "value": "LT", "label": "Lithuania" },
+                { "value": "LU", "label": "Luxembourg" },
+                { "value": "MO", "label": "Macao" },
+                { "value": "MG", "label": "Madagascar" },
+                { "value": "MW", "label": "Malawi" },
+                { "value": "MY", "label": "Malaysia" },
+                { "value": "MV", "label": "Maldives" },
+                { "value": "ML", "label": "Mali" },
+                { "value": "MT", "label": "Malta" },
+                { "value": "MH", "label": "Marshall Islands" },
+                { "value": "MQ", "label": "Martinique" },
+                { "value": "MR", "label": "Mauritania" },
+                { "value": "MU", "label": "Mauritius" },
+                { "value": "YT", "label": "Mayotte" },
+                { "value": "MX", "label": "Mexico" },
+                { "value": "FM", "label": "Micronesia (Federated States of)" },
+                { "value": "MD", "label": "Moldova (Republic of)" },
+                { "value": "MC", "label": "Monaco" },
+                { "value": "MN", "label": "Mongolia" },
+                { "value": "ME", "label": "Montenegro" },
+                { "value": "MS", "label": "Montserrat" },
+                { "value": "MA", "label": "Morocco" },
+                { "value": "MZ", "label": "Mozambique" },
+                { "value": "MM", "label": "Myanmar" },
+                { "value": "NA", "label": "Namibia" },
+                { "value": "NR", "label": "Nauru" },
+                { "value": "NP", "label": "Nepal" },
+                { "value": "NL", "label": "Netherlands" },
+                { "value": "NC", "label": "New Caledonia" },
+                { "value": "NZ", "label": "New Zealand" },
+                { "value": "NI", "label": "Nicaragua" },
+                { "value": "NE", "label": "Niger" },
+                { "value": "NG", "label": "Nigeria" },
+                { "value": "NU", "label": "Niue" },
+                { "value": "NF", "label": "Norfolk Island" },
+                { "value": "MK", "label": "North Macedonia" },
+                { "value": "MP", "label": "Northern Mariana Islands" },
+                { "value": "NO", "label": "Norway" },
+                { "value": "OM", "label": "Oman" },
+                { "value": "PK", "label": "Pakistan" },
+                { "value": "PW", "label": "Palau" },
+                { "value": "PS", "label": "Palestine, State of" },
+                { "value": "PA", "label": "Panama" },
+                { "value": "PG", "label": "Papua New Guinea" },
+                { "value": "PY", "label": "Paraguay" },
+                { "value": "PE", "label": "Peru" },
+                { "value": "PH", "label": "Philippines" },
+                { "value": "PN", "label": "Pitcairn" },
+                { "value": "PL", "label": "Poland" },
+                { "value": "PT", "label": "Portugal" },
+                { "value": "PR", "label": "Puerto Rico" },
+                { "value": "QA", "label": "Qatar" },
+                { "value": "RE", "label": "Réunion" },
+                { "value": "RO", "label": "Romania" },
+                { "value": "RU", "label": "Russian Federation" },
+                { "value": "RW", "label": "Rwanda" },
+                { "value": "BL", "label": "Saint Barthélemy" },
+                {
+                  "value": "SH",
+                  "label": "Saint Helena, Ascension and Tristan da Cunha"
+                },
+                { "value": "KN", "label": "Saint Kitts and Nevis" },
+                { "value": "LC", "label": "Saint Lucia" },
+                { "value": "MF", "label": "Saint Martin (French part)" },
+                { "value": "PM", "label": "Saint Pierre and Miquelon" },
+                { "value": "VC", "label": "Saint Vincent and the Grenadines" },
+                { "value": "WS", "label": "Samoa" },
+                { "value": "SM", "label": "San Marino" },
+                { "value": "ST", "label": "Sao Tome and Principe" },
+                { "value": "SA", "label": "Saudi Arabia" },
+                { "value": "SN", "label": "Senegal" },
+                { "value": "RS", "label": "Serbia" },
+                { "value": "SC", "label": "Seychelles" },
+                { "value": "SL", "label": "Sierra Leone" },
+                { "value": "SG", "label": "Singapore" },
+                { "value": "SX", "label": "Sint Maarten (Dutch part)" },
+                { "value": "SK", "label": "Slovakia" },
+                { "value": "SI", "label": "Slovenia" },
+                { "value": "SB", "label": "Solomon Islands" },
+                { "value": "SO", "label": "Somalia" },
+                { "value": "ZA", "label": "South Africa" },
+                {
+                  "value": "GS",
+                  "label": "South Georgia and the South Sandwich Islands"
+                },
+                { "value": "SS", "label": "South Sudan" },
+                { "value": "ES", "label": "Spain" },
+                { "value": "LK", "label": "Sri Lanka" },
+                { "value": "SD", "label": "Sudan" },
+                { "value": "SR", "label": "Suriname" },
+                { "value": "SJ", "label": "Svalbard and Jan Mayen" },
+                { "value": "SE", "label": "Sweden" },
+                { "value": "CH", "label": "Switzerland" },
+                { "value": "SY", "label": "Syrian Arab Republic" },
+                { "value": "TW", "label": "Taiwan, Province of China" },
+                { "value": "TJ", "label": "Tajikistan" },
+                { "value": "TZ", "label": "Tanzania, United Republic of" },
+                { "value": "TH", "label": "Thailand" },
+                { "value": "TL", "label": "Timor-Leste" },
+                { "value": "TG", "label": "Togo" },
+                { "value": "TK", "label": "Tokelau" },
+                { "value": "TO", "label": "Tonga" },
+                { "value": "TT", "label": "Trinidad and Tobago" },
+                { "value": "TN", "label": "Tunisia" },
+                { "value": "TR", "label": "Turkey" },
+                { "value": "TM", "label": "Turkmenistan" },
+                { "value": "TC", "label": "Turks and Caicos Islands" },
+                { "value": "TV", "label": "Tuvalu" },
+                { "value": "UG", "label": "Uganda" },
+                { "value": "UA", "label": "Ukraine" },
+                { "value": "AE", "label": "United Arab Emirates" },
+                {
+                  "value": "GB",
+                  "label": "United Kingdom of Great Britain and Northern Ireland"
+                },
+                { "value": "US", "label": "United States of America" },
+                {
+                  "value": "UM",
+                  "label": "United States Minor Outlying Islands"
+                },
+                { "value": "UY", "label": "Uruguay" },
+                { "value": "UZ", "label": "Uzbekistan" },
+                { "value": "VU", "label": "Vanuatu" },
+                {
+                  "value": "VE",
+                  "label": "Venezuela (Bolivarian Republic of)"
+                },
+                { "value": "VN", "label": "Viet Nam" },
+                { "value": "VG", "label": "Virgin Islands (British)" },
+                { "value": "VI", "label": "Virgin Islands (U.S.)" },
+                { "value": "WF", "label": "Wallis and Futuna" },
+                { "value": "EH", "label": "Western Sahara" },
+                { "value": "YE", "label": "Yemen" },
+                { "value": "ZM", "label": "Zambia" },
+                { "value": "ZW", "label": "Zimbabwe" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "ssn",
+              "type": "text",
+              "label": "Social Security Number",
+              "placeholder": "XXX-XX-XXXX",
+              "validation": {
+                "required": true,
+                "InputPattern": "###-##-####",
+                "pattern": "^\\d{3}-\\d{2}-\\d{4}$",
+                "message": "Please enter a valid SSN in the format XXX-XX-XXXX"
+              }
+            },
+            {
+              "id": "genderShare",
+              "type": "radio",
+              "label": "Can provider's gender be shared on the Provider Search tool for clients?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "email",
+              "type": "email",
+              "label": "Application Contact Email Address",
+              "placeholder": "Enter your email",
+              "validation": {
+                "required": true,
+                "email": true
+              }
+            },
+            {
+              "id": "profitStatus",
+              "type": "select",
+              "label": "Profit Status",
+              "options": [
+                { "value": "Non-Profit", "label": "Non-Profit" },
+                {
+                  "value": "For-Profit, Closely Held",
+                  "label": "For-Profit, Closely Held"
+                },
+                {
+                  "value": "For-Profit, Publicly Traded",
+                  "label": "For-Profit, Publicly Traded"
+                }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "id": "commentsRating",
-          "type": "textarea",
-          "label": "Please provide any feedback on what influenced your rating",
-          "placeholder": "Please provide any additional feedback",
-          "validation": {
-            "max": 500
-          }
-        }
-      ]
-    },
-    {
-      "id": "professionalInfo",
-      "title": "Professional Information",
-      "elements": [
-        {
-          "id": "hasExperience",
-          "type": "radio",
-          "label": "Do you have prior experience?",
-          "options": [
-            { "value": "yes", "label": "Yes" },
-            { "value": "no", "label": "No" }
-          ],
-          "validation": {
-            "required": true
-          }
-        },
-        {
-          "id": "experienceYears",
-          "type": "select",
-          "label": "Years of Experience",
-          "options": [
-            { "value": "1-3", "label": "1-3 years" },
-            { "value": "4-6", "label": "4-6 years" },
-            { "value": "7+", "label": "7+ years" }
-          ],
-          "validation": {
-            "required": true
-          },
+          "id": "taxInfo",
+          "title": "Tax Information",
           "showIf": {
-            "field": "hasExperience",
+            "field": "receivePayments",
+            "value": "yes"
+          },
+          "elements": [
+            {
+              "id": "useFEIN",
+              "type": "radio",
+              "label": "Do you use an FEIN for tax reporting purposes?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              },
+              "showIf": {
+                "field": "receivePayments",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "FEIN",
+              "type": "text",
+              "label": "FEIN",
+              "placeholder": "",
+              "validation": {
+                "required": true,
+                "min": 2,
+                "max": 50
+              },
+              "showIf": [
+                { "field": "receivePayments", "value": "yes" },
+                { "field": "useFEIN", "value": "yes" }
+              ]
+            },
+            {
+              "id": "legalBusinessName",
+              "type": "text",
+              "label": "Legal Business Name",
+              "placeholder": "",
+              "validation": {
+                "required": true,
+                "min": 2,
+                "max": 50
+              },
+              "showIf": [
+                { "field": "receivePayments", "value": "yes" },
+                { "field": "useFEIN", "value": "yes" }
+              ]
+            },
+            {
+              "id": "DBAName",
+              "type": "text",
+              "description": "If you are a Pay-To Provider, you will need to mail a signed W-9 form along with your electronic funding information to Wyoming Medicaid Provider Enrollment upon submission of your application. Please download W-9 form from the below URL: https://sao.wyo.gov/vendors",
+              "label": "Doing Business As (DBA) Name",
+              "placeholder": "Doing Business As (DBA) Name",
+              "validation": {
+                "required": true,
+                "min": 2,
+                "max": 50
+              },
+              "showIf": {
+                "field": "receivePayments",
+                "value": "yes"
+              }
+            }
+          ]
+        },
+        {
+          "id": "tribalInfo",
+          "title": "Federal Employee at Tribal Facility",
+
+          "elements": [
+            {
+              "id": "federalEmployeeAtTribalFacility",
+              "type": "radio",
+              "label": "Are you a federal employee working at one of the following facilities: Indian Health Services or a 638 Tribal facility?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programParticipation",
+      "title": "Program Participation",
+      "subsections": [
+        {
+          "id": "participationSelectionTitle",
+          "title": "Program Selection",
+          "elements": [
+            {
+              "id": "participationSelection",
+              "type": "select",
+              "label": "Select the program(s) you are interested in",
+              "options": [
+                {
+                  "value": "Medicaid fee-for-service",
+                  "label": "Medicaid fee-for-service"
+                }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "providerIdentifiers",
+      "title": "Professional Identifiers",
+      "subsections": [
+        {
+          "id": "professionalIdentifiersTitle",
+          "title": "Professional Identifiers",
+          "elements": [
+            {
+              "id": "hasNPI",
+              "type": "radio",
+              "label": "Do you have an NPI?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "NPINumber",
+              "type": "text",
+              "label": "NPI Number",
+              "placeholder": "Enter your NPI number",
+              "validation": {
+                "required": true,
+                "InputPattern": "##-######-##"
+              },
+              "showIf": {
+                "field": "hasNPI",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "isMedicareParticipant",
+              "type": "radio",
+              "label": "Are you a participant in Medicare?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "medicareParticipantDetails",
+              "type": "table",
+              "label": "Medicare Participant Table",
+              "columns": [
+                {
+                  "id": "medicareId",
+                  "label": "Medicare ID",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "minLength": 2
+                  }
+                },
+                {
+                  "id": "effectiveDate",
+                  "label": "Effective Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "date": {
+                      "maxDate": "today",
+                      "minDate": 6570
+                    }
+                  }
+                },
+                {
+                  "id": "endDate",
+                  "label": "End Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "date": {
+                      "maxDate": 6570,
+                      "minDate": "today"
+                    }
+                  }
+                }
+              ],
+              "showIf": {
+                "field": "isMedicareParticipant",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "hasBillLaboratory",
+              "type": "radio",
+              "label": "Do you have a bill laboratory services?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "billLaboratoryDetails",
+              "type": "table",
+              "label": "Identify what type of Clinical Laboratory Improvement Amendments the enrolling provider has.",
+              "columns": [
+                {
+                  "id": "cliaType",
+                  "label": "CLIA Type",
+                  "type": "select",
+                  "options": [
+                    { "value": "2-Waiver", "label": "2 - Waiver" },
+                    {
+                      "value": "1-RegisteredLaboratory",
+                      "label": "1 - RegisteredLaboratory"
+                    },
+                    {
+                      "value": "4-ProviderPerformedMicroscopyProcedures",
+                      "label": "4- Provider Performed Microscopy Procedures"
+                    }
+                  ],
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "cliaNumber",
+                  "label": "CLIA Number",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                  }
+                },
+                {
+                  "id": "cliaStartDate",
+                  "label": "CLIA Start Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "date": {
+                      "maxDate": "today",
+                      "minDate": 6570
+                    }
+                  }
+                },
+                {
+                  "id": "cliaEndDate",
+                  "label": "CLIA End Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "compare": {
+                      "field": "cliaStartDate",
+                      "operator": "gte"
+                    }
+                  }
+                }
+              ],
+              "showIf": {
+                "field": "isMedicareParticipant",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "hasMedicalDirector",
+              "type": "radio",
+              "label": "Do you have a Medical Director?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "medicalDirectorName",
+              "type": "text",
+              "label": "Medical Director Name",
+              "placeholder": "Enter Medical Director Name",
+              "validation": {
+                "required": true
+              },
+              "showIf": {
+                "field": "hasMedicalDirector",
+                "value": "yes"
+              }
+            }
+          ]
+        },
+        {
+          "id": "alternatelIdentifiersTitle",
+          "title": "Alternative Identifiers",
+          "description": "If you know the previously used Wyoming Medicaid ID number, Wyoming Online Financial System ID, or National Council for Prescription Drug Program ID number, indicate within the table.",
+          "elements": [
+            {
+              "id": "alternateIdentifiersDetails",
+              "type": "table",
+              "label": "If you know the previously used Wyoming Medicaid ID number, Wyoming Online Financial System ID, or National Council for Prescription Drug Program ID number, indicate within the table.",
+              "columns": [
+                {
+                  "id": "alternateIdentifierType",
+                  "label": "Type",
+                  "type": "select",
+                  "options": [
+                    {
+                      "value": "PriorWyomingMedicaidId",
+                      "label": "Prior Wyoming Medicaid ID"
+                    },
+                    {
+                      "value": "WOLFId",
+                      "label": "Wyoming Online Financial System ID"
+                    },
+                    {
+                      "value": "NCPDPId",
+                      "label": "National Council for Prescription Drug Program ID"
+                    }
+                  ],
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "alternateIdentifierId",
+                  "label": "Identifier",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                  }
+                },
+                {
+                  "id": "alternateIdentifierEffectiveDate",
+                  "label": "Effective Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "date": {
+                      "maxDate": "today",
+                      "minDate": 6570
+                    }
+                  }
+                },
+                {
+                  "id": "alternateIdentifierEndDate",
+                  "label": "End Date",
+                  "type": "date",
+                  "validation": {
+                    "required": true,
+                    "date": {
+                      "maxDate": 6570,
+                      "minDate": "today"
+                    }
+                  }
+                }
+              ],
+              "showIf": {
+                "field": "isMedicareParticipant",
+                "value": "yes"
+              }
+            }
+          ],
+          "showIf": {
+            "field": "hasNPI",
             "value": "yes"
           }
+        },
+        {
+          "id": "additionalInformationTitle",
+          "title": "Additional Information",
+          "elements": [
+            {
+              "id": "isTeachingProvider",
+              "type": "radio",
+              "label": "Are you a Teaching Provider?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "isTreatingProvider",
+              "type": "radio",
+              "label": "Are you a Treating Provider?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "isDRGParticipatingProvider",
+              "type": "radio",
+              "label": "Are you a DRG Participating Provider?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "hasPASRRAccess",
+              "type": "radio",
+              "label": "Do you need PASRR Access?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "is340BDrugPricingProgram",
+              "type": "radio",
+              "label": "Are you a part of the 340-B Drug Pricing program?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "isStandardOfCareAgreement",
+              "type": "radio",
+              "label": "Do you have a Standard of Care Agreement?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "hasEDIorTPA",
+              "type": "radio",
+              "label": "Do you have Electronic Data Interchange (EDI) or Trading Partner Authorization (TPA)?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": false
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "id": "skills",
-      "title": "Skills",
-      "elements": [
+      "id": "addressDetails",
+      "title": "Address Details",
+      "subsections": [
         {
-          "id": "skills",
-          "type": "checkbox",
-          "label": "Select your skills",
-          "options": [
-            { "value": "javascript", "label": "JavaScript" },
-            { "value": "react", "label": "React" },
-            { "value": "node", "label": "Node.js" },
-            { "value": "python", "label": "Python" }
-          ],
-          "validation": {
-            "min": 1
-          }
+          "id": "mailingAddress",
+          "title": "Mailing Address",
+          "description": "To find your 5 digits FIPS county code, please use the <a href='https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt#:~:text=WISCONSIN%0A%20%20%20%20%20%20%2056%20%20%20%20%20%20%20%20WYOMING-,county%2Dlevel,-place%0A%20%20FIPS%20code'>USDA web site</a>",
+          "elements": [
+            {
+              "id": "mailingAddressLine1",
+              "type": "text",
+              "label": "Mailing Address Line 1",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressLine2",
+              "type": "text",
+              "label": "Mailing Address Line 2",
+              "validation": {
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressCity",
+              "type": "text",
+              "label": "City",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressState",
+              "type": "select",
+              "label": "State",
+              "options": {
+                "type": "api",
+                "endpoint": "https://geo-location-data1.p.rapidapi.com/api/geo/get-states",
+                "params": {
+                  "country_id": "5"
+                }
+              },
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "mailingAddressZip",
+              "type": "text",
+              "label": "Zip Code",
+              "validation": {
+                "required": true,
+                "minLength": 5,
+                "maxLength": 5
+              }
+            },
+            {
+              "id": "mailingAddressCounty",
+              "type": "text",
+              "label": "County",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "isDeliverToPOBox",
+              "type": "radio",
+              "label": "The U.S. Postal Service requires mail to be delivered to a post office box in my city or county?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "mailingAddressContactPerson",
+          "title": "Mailing Address Contact Person Details",
+
+          "elements": [
+            {
+              "id": "mailingAddressFirstName",
+              "type": "text",
+              "label": "First Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressMiddleName",
+              "type": "text",
+              "label": "Middle Name",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressLastName",
+              "type": "text",
+              "label": "Last Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "mailingAddressPhone",
+              "type": "text",
+              "label": "Phone Number",
+              "validation": {
+                "required": true,
+                "InputPattern": "###-###-####"
+              }
+            },
+
+            {
+              "id": "mailingAddressExtension",
+              "type": "text",
+              "label": "Extension",
+              "validation": {
+                "required": true,
+                "minLength": 5,
+                "maxLength": 5
+              }
+            },
+            {
+              "id": "mailingAddressFax",
+              "type": "text",
+              "label": "Fax Number",
+              "validation": {
+                "required": true,
+                "InputPattern": "###-###-####"
+              }
+            },
+            {
+              "id": "mailingAddressEmail",
+              "type": "email",
+              "label": "email",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "mailingAddressPosition",
+              "type": "text",
+              "label": "Position",
+              "validation": {
+                "required": false,
+                "maxLength": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "billingAddress",
+          "title": "Billing Address",
+
+          "elements": [
+            {
+              "id": "isBillingAddressSameAsMailingAddress",
+              "type": "radio",
+              "label": "Is Billing Address same as Mailing Address",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "billingAddressLine1",
+              "type": "text",
+              "label": "Mailing Address Line 1",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "billingAddressLine2",
+              "type": "text",
+              "label": "Mailing Address Line 2",
+              "validation": {
+                "maxLength": 50
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "billingAddressCity",
+              "type": "text",
+              "label": "City",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "billingAddressState",
+              "type": "select",
+              "label": "State",
+              "options": {
+                "type": "api",
+                "endpoint": "https://geo-location-data1.p.rapidapi.com/api/geo/get-states",
+                "params": {
+                  "country_id": "5"
+                }
+              },
+              "validation": {
+                "required": true
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "billingAddressZip",
+              "type": "text",
+              "label": "Zip Code",
+              "validation": {
+                "required": true,
+                "minLength": 5,
+                "maxLength": 5
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "billingAddressCounty",
+              "type": "text",
+              "label": "County",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "showIf": {
+                "field": "isBillingAddressSameAsMailingAddress",
+                "value": "no"
+              }
+            },
+            {
+              "id": "BillingContactPerson",
+              "title": "Billing Contact Person Details",
+
+              "elements": [
+                {
+                  "id": "isBillingContactPersonSameAsMailingContactPerson",
+                  "type": "radio",
+                  "label": "Is Billing Contact Person same as Mailing Contact Person",
+                  "options": [
+                    { "value": "yes", "label": "Yes" },
+                    { "value": "no", "label": "No" }
+                  ],
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "billingAddressFirstName",
+                  "type": "text",
+                  "label": "First Name",
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressMiddleName",
+                  "type": "text",
+                  "label": "Middle Name",
+                  "validation": {
+                    "required": false,
+                    "minLength": 2,
+                    "maxLength": 50
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressLastName",
+                  "type": "text",
+                  "label": "Last Name",
+                  "validation": {
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressPhone",
+                  "type": "text",
+                  "label": "Phone Number",
+                  "validation": {
+                    "required": true,
+                    "InputPattern": "###-###-####"
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+
+                {
+                  "id": "billingAddressExtension",
+                  "type": "text",
+                  "label": "Extension",
+                  "validation": {
+                    "required": true,
+                    "minLength": 5,
+                    "maxLength": 5
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressFax",
+                  "type": "text",
+                  "label": "Fax Number",
+                  "validation": {
+                    "required": true,
+                    "InputPattern": "###-###-####"
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressEmail",
+                  "type": "email",
+                  "label": "email",
+                  "validation": {
+                    "required": true
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                },
+                {
+                  "id": "billingAddressPosition",
+                  "type": "text",
+                  "label": "Position",
+                  "validation": {
+                    "required": false,
+                    "maxLength": 50
+                  },
+                  "showIf": {
+                    "field": "isBillingContactPersonSameAsMailingContactPerson",
+                    "value": "no"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
-      "id": "additionalInfo",
-      "title": "Additional Information",
-      "elements": [
+      "id": "TaxonomyInfo",
+      "title": "Taxonomy / License / Affiliation Information",
+      "subsections": [
         {
-          "id": "commentsAdditional",
-          "type": "rich-text",
-          "label": "Additional Comments",
-          "placeholder": "Any other information you'd like to share",
-          "validation": {
-            "max": 500
-          }
+          "id": "taxonomy",
+          "title": "Taxonomy Category",
+          "description": "Please select the taxonomy category that best describes your professional practice.",
+          "elements": [
+            {
+              "id": "taxonomyCategory",
+              "type": "select",
+              "label": "Taxonomy Category",
+              "options": [
+                { "value": "Audiology", "label": "Audiology" },
+                { "value": "DHCFAllowances", "label": "DHCF Allowances" },
+                { "value": "MentalHealth", "label": "Mental Health" },
+                { "value": "Physician", "label": "Physician" },
+                { "value": "Therapy", "label": "Therapy" },
+                { "value": "Chiropractic", "label": "Chiropractic" },
+                { "value": "Dental", "label": "Dental" },
+                { "value": "Dietary", "label": "Dietary" },
+                { "value": "Dietician", "label": "Dietician" },
+                { "value": "Podiatry", "label": "Podiatry" },
+                { "value": "NursePractioner", "label": "Nurse Practioner" },
+                { "value": "Optometry", "label": "Optometry" },
+                { "value": "Interpreter", "label": "Interpreter" },
+                { "value": "Midwife", "label": "Midwife (Non Nurse)" },
+                { "value": "Paramedic", "label": "Paramedic/EMT" },
+                { "value": "Pharmacist", "label": "Pharmacist" },
+                { "value": "Physiotherapist", "label": "Physiotherapist" },
+                { "value": "Psychologist", "label": "Psychologist" },
+                { "value": "Radiology", "label": "Radiology" },
+                {
+                  "value": "RespiratoryTherapist",
+                  "label": "Respiratory Therapist"
+                },
+                {
+                  "value": "SpeechLanguagePathologist",
+                  "label": "Speech Language Pathologist"
+                }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "taxonomyInfo",
+          "title": "Taxonomies",
+          "elements": [
+            {
+              "id": "taxonomyCode",
+              "type": "select",
+              "label": "Primary Taxonomy",
+              "options": [
+                {
+                  "value": "207L00000X",
+                  "label": "207L00000X - Anesthesiology"
+                },
+                {
+                  "value": "207Q00000X",
+                  "label": "207Q00000X - Anesthesiology Assistant"
+                },
+                {
+                  "value": "207R00000X",
+                  "label": "207R00000X - Basic Life Support for Healthcare Providers"
+                },
+                {
+                  "value": "207V00000X",
+                  "label": "207V00000X - Cardiovascular Interventional Radiology"
+                },
+                {
+                  "value": "207X00000X",
+                  "label": "207X00000X - Cardiovascular/Interventional Radiology"
+                }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "additionalTaxonomyCode",
+              "type": "multiselect",
+              "label": "Additional Taxonomies",
+              "options": [
+                {
+                  "value": "207L00000X",
+                  "label": "207L00000X - Anesthesiology"
+                },
+                {
+                  "value": "207Q00000X",
+                  "label": "207Q00000X - Anesthesiology Assistant"
+                },
+                {
+                  "value": "207R00000X",
+                  "label": "207R00000X - Basic Life Support for Healthcare Providers"
+                },
+                {
+                  "value": "207V00000X",
+                  "label": "207V00000X - Cardiovascular Interventional Radiology"
+                },
+                {
+                  "value": "207X00000X",
+                  "label": "207X00000X - Cardiovascular/Interventional Radiology"
+                }
+              ],
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "deaNumber",
+          "title": "DEA Number",
+          "elements": [
+            {
+              "id": "deaNumber",
+              "type": "text",
+              "label": "DEA Number"
+            }
+          ]
+        },
+        {
+          "id": "taxonomyLicense",
+          "title": "License Information",
+          "elements": [
+            {
+              "id": "taxonomyLicensesTable",
+              "type": "table",
+              "label": "License Information",
+              "columns": [
+                {
+                  "id": "licenseNumber",
+                  "label": "License Number",
+                  "type": "text",
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "licenseType",
+                  "label": "License Type",
+                  "type": "select",
+                  "options": [
+                    { "value": "state", "label": "State" },
+                    { "value": "national", "label": "National" }
+                  ],
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "licenseState",
+                  "label": "License State",
+                  "type": "text",
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "licenseIssueDate",
+                  "label": "License Issue Date",
+                  "type": "date",
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "licenseExpirationDate",
+                  "label": "License Expiration Date",
+                  "type": "date",
+                  "validation": { "required": true }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "affiliations",
+          "title": "Affiliations",
+          "elements": [
+            {
+              "id": "taxonomyAffiliationsTable",
+              "type": "table",
+              "label": "Affiliations",
+              "columns": [
+                {
+                  "id": "NPI-FEIN",
+                  "label": "NPI/FEIN Number",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "InputPattern": "##-########-##",
+                    "pattern": "^[1-2]d{1}-d{6}-d{2}$"
+                  }
+                },
+                {
+                  "id": "affiliationType",
+                  "label": "Affiliation Type",
+                  "type": "select",
+                  "options": [
+                    {
+                      "value": "IndividualToGroup",
+                      "label": "Individual to Group"
+                    },
+                    {
+                      "value": "IndividualToFacility",
+                      "label": "Individual to Facility"
+                    }
+                  ],
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "affiliationStartDate",
+                  "label": "Effective Date",
+                  "type": "date",
+                  "validation": { "required": true }
+                },
+                {
+                  "id": "affiliationEndDate",
+                  "label": "Effective Date To",
+                  "type": "date",
+                  "validation": { "required": true }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primaryServiceLocationInfo",
+      "title": "Primary Service Location Information",
+      "subsections": [
+        {
+          "id": "primaryServiceAddress",
+          "title": "Address",
+          "elements": [
+            {
+              "id": "primaryServiceLocationAddress1",
+              "type": "text",
+              "label": "Address Line 1",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationAddress2",
+              "type": "text",
+              "label": "Address Line 2",
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "primaryServiceLocationAddressCity",
+              "type": "text",
+              "label": "City",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationState",
+              "type": "select",
+              "label": "State",
+              "options": {
+                "type": "api",
+                "endpoint": "https://geo-location-data1.p.rapidapi.com/api/geo/get-states",
+                "params": {
+                  "country_id": "5"
+                }
+              },
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "primaryServiceLocationZip",
+              "type": "text",
+              "label": "Zip Code",
+              "validation": {
+                "required": true,
+                "minLength": 5,
+                "maxLength": 5
+              }
+            },
+            {
+              "id": "primaryServiceLocationCounty",
+              "type": "text",
+              "label": "County"
+            }
+          ]
+        },
+        {
+          "id": "primaryServiceLocationContact",
+          "title": "Contact Information",
+          "elements": [
+            {
+              "id": "primaryServiceLocationContactFirstName",
+              "type": "text",
+              "label": "First Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactMiddleName",
+              "type": "text",
+              "label": "Middle Name",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactLastName",
+              "type": "text",
+              "label": "Last Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactPhone",
+              "type": "text",
+              "label": "Phone Number",
+              "validation": {
+                "required": false,
+                "InputPattern": "###-###-####"
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactExtension",
+              "type": "text",
+              "label": "Extension",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactFax",
+              "type": "text",
+              "label": "Fax",
+              "validation": {
+                "required": false,
+                "InputPattern": "###-###-####"
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactEmail",
+              "type": "email",
+              "label": "Email",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "primaryServiceLocationContactPosition",
+              "type": "text",
+              "label": "Position",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "primaryServiceLocationDetails",
+          "title": "Details",
+          "elements": [
+            {
+              "id": "primaryServiceLocationDetailsGendersServed",
+              "type": "select",
+              "label": "Genders Served",
+              "options": [
+                { "value": "male", "label": "Male" },
+                { "value": "female", "label": "Female" },
+                { "value": "both", "label": "Both" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationDetailsLanguages",
+              "type": "multiselect",
+              "label": "Languages",
+              "options": [
+                { "value": "english", "label": "English" },
+                { "value": "spanish", "label": "Spanish" },
+                { "value": "french", "label": "French" },
+                { "value": "german", "label": "German" },
+                { "value": "other", "label": "Other" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationDetailsAgesServed",
+              "type": "radio",
+              "label": "All Ages Served",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationAgeRange",
+              "type": "checkbox",
+              "label": "Age Range",
+              "options": [
+                { "value": "0-5", "label": "0-5 years" },
+                { "value": "6-12", "label": "6-12 years" },
+                { "value": "13-17", "label": "13-17 years" },
+                { "value": "18-21", "label": "18-21 years" },
+                { "value": "22-59", "label": "22-59 years" },
+                { "value": "60+", "label": "60+ years" }
+              ],
+              "showIf": {
+                "field": "primaryServiceLocationDetailsAgesServed",
+                "value": "no"
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsAcceptingNewPatients",
+              "type": "radio",
+              "label": "Accepting New Patients",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsTDDTTY",
+              "type": "radio",
+              "label": "Is this location TDD/TTY equipped?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationDetailsTDDTTYNumber",
+              "type": "text",
+              "label": "TDDTTY Number",
+              "validation": {
+                "required": true
+              },
+              "showIf": {
+                "field": "primaryServiceLocationDetailsTDDTTY",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsCountiesServed",
+              "type": "radio",
+              "label": "Counties Served",
+              "options": [
+                { "value": "all", "label": "All" },
+                { "value": "specific", "label": "Specific" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationDetailsSpecificCounties",
+              "type": "multiselect",
+              "label": "Specific Counties",
+              "options": [
+                {
+                  "value": "ALB",
+                  "label": "Albany County"
+                },
+                {
+                  "value": "BH",
+                  "label": "Big Horn County"
+                },
+                {
+                  "value": "CAMP",
+                  "label": "Campbell County"
+                },
+                {
+                  "value": "CARB",
+                  "label": "Carbon County"
+                },
+                {
+                  "value": "CONV",
+                  "label": "Converse County"
+                },
+                {
+                  "value": "CROOK",
+                  "label": "Crook County"
+                },
+                {
+                  "value": "FREM",
+                  "label": "Fremont County"
+                },
+                {
+                  "value": "GOS",
+                  "label": "Goshen County"
+                },
+                {
+                  "value": "HOT",
+                  "label": "Hot Springs County"
+                },
+                {
+                  "value": "JOHN",
+                  "label": "Johnson County"
+                },
+                {
+                  "value": "LAR",
+                  "label": "Laramie County"
+                },
+                {
+                  "value": "LINC",
+                  "label": "Lincoln County"
+                },
+                {
+                  "value": "NAT",
+                  "label": "Natrona County"
+                },
+                {
+                  "value": "NIO",
+                  "label": "Niobrara County"
+                },
+                {
+                  "value": "PARK",
+                  "label": "Park County"
+                },
+                {
+                  "value": "PLAT",
+                  "label": "Platte County"
+                },
+                {
+                  "value": "SHER",
+                  "label": "Sheridan County"
+                },
+                {
+                  "value": "SUB",
+                  "label": "Sublette County"
+                },
+                {
+                  "value": "SWEET",
+                  "label": "Sweetwater County"
+                },
+                {
+                  "value": "TETON",
+                  "label": "Teton County"
+                },
+                {
+                  "value": "UINTA",
+                  "label": "Uinta County"
+                },
+                {
+                  "value": "WASH",
+                  "label": "Washakie County"
+                },
+                {
+                  "value": "WES",
+                  "label": "Weston County"
+                }
+              ],
+              "showIf": {
+                "field": "primaryServiceLocationDetailsCountiesServed",
+                "value": "specific"
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsOpenTime",
+              "type": "radio",
+              "label": "Is this location open 24 hours?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "primaryServiceLocationDetailsOfficeHours",
+              "type": "radio",
+              "label": "Are the office hours the same Monday through Friday?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "showIf": {
+                "field": "primaryServiceLocationDetailsOpenTime",
+                "value": "no"
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsOfficeHoursStartTime",
+              "type": "time",
+              "label": "Office Hours Start Time",
+              "showIf": {
+                "field": "primaryServiceLocationDetailsOfficeHours",
+                "value": "no"
+              }
+            },
+            {
+              "id": "primaryServiceLocationDetailsEmergencyServicesAfterHours",
+              "type": "radio",
+              "label": "Does this location provide emergency services after standard business hours?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "secondaryServiceLocationInfo",
+      "title": "Secondary Service Location Information",
+      "subsections": [
+        {
+          "id": "secondaryServiceLocationAddress",
+          "title": "Address",
+          "elements": [
+            {
+              "id": "secondaryServiceLocationAddress1",
+              "type": "text",
+              "label": "Address Line 1",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationAddress2",
+              "type": "text",
+              "label": "Address Line 2",
+              "validation": {
+                "required": false
+              }
+            },
+            {
+              "id": "secondaryServiceLocationAddressCity",
+              "type": "text",
+              "label": "City",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationState",
+              "type": "select",
+              "label": "State",
+              "options": {
+                "api": "getStates"
+              },
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "secondaryServiceLocationZip",
+              "type": "text",
+              "label": "Zip Code",
+              "validation": {
+                "required": true,
+                "minLength": 5,
+                "maxLength": 5
+              }
+            },
+            {
+              "id": "secondaryServiceLocationCounty",
+              "type": "select",
+              "label": "County",
+              "options": [
+                {
+                  "value": "ALB",
+                  "label": "Albany County"
+                },
+                {
+                  "value": "BH",
+                  "label": "Big Horn County"
+                },
+                {
+                  "value": "CAMP",
+                  "label": "Campbell County"
+                },
+                {
+                  "value": "CARB",
+                  "label": "Carbon County"
+                },
+                {
+                  "value": "CONV",
+                  "label": "Converse County"
+                },
+                {
+                  "value": "CROOK",
+                  "label": "Crook County"
+                },
+                {
+                  "value": "FREM",
+                  "label": "Fremont County"
+                },
+                {
+                  "value": "GOS",
+                  "label": "Goshen County"
+                },
+                {
+                  "value": "HOT",
+                  "label": "Hot Springs County"
+                },
+                {
+                  "value": "JOHN",
+                  "label": "Johnson County"
+                },
+                {
+                  "value": "LAR",
+                  "label": "Laramie County"
+                },
+                {
+                  "value": "LINC",
+                  "label": "Lincoln County"
+                },
+                {
+                  "value": "NAT",
+                  "label": "Natrona County"
+                },
+                {
+                  "value": "NIO",
+                  "label": "Niobrara County"
+                },
+                {
+                  "value": "PARK",
+                  "label": "Park County"
+                },
+                {
+                  "value": "PLAT",
+                  "label": "Platte County"
+                },
+                {
+                  "value": "SHER",
+                  "label": "Sheridan County"
+                },
+                {
+                  "value": "SUB",
+                  "label": "Sublette County"
+                },
+                {
+                  "value": "SWEET",
+                  "label": "Sweetwater County"
+                },
+                {
+                  "value": "TETON",
+                  "label": "Teton County"
+                },
+                {
+                  "value": "UINTA",
+                  "label": "Uinta County"
+                },
+                {
+                  "value": "WASH",
+                  "label": "Washakie County"
+                },
+                {
+                  "value": "WES",
+                  "label": "Weston County"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "secondaryServiceLocationContact",
+          "title": "Contact Information",
+          "elements": [
+            {
+              "id": "secondaryServiceLocationContactFirstName",
+              "type": "text",
+              "label": "First Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactMiddleName",
+              "type": "text",
+              "label": "Middle Name",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactLastName",
+              "type": "text",
+              "label": "Last Name",
+              "validation": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactPhone",
+              "type": "text",
+              "label": "Phone Number",
+              "validation": {
+                "required": false,
+                "InputPattern": "###-###-####"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactExtension",
+              "type": "text",
+              "label": "Extension",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactFax",
+              "type": "text",
+              "label": "Fax",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactEmail",
+              "type": "email",
+              "label": "Email",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "secondaryServiceLocationContactPosition",
+              "type": "text",
+              "label": "Position",
+              "validation": {
+                "required": false,
+                "minLength": 2,
+                "maxLength": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "secondaryServiceLocationDetails",
+          "title": "Details",
+          "elements": [
+            {
+              "id": "secondaryServiceLocationDetailsGendersServed",
+              "type": "select",
+              "label": "Genders Served",
+              "options": [
+                { "value": "male", "label": "Male" },
+                { "value": "female", "label": "Female" },
+                { "value": "both", "label": "Both" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationDetailsLanguages",
+              "type": "multiselect",
+              "label": "Languages",
+              "options": [
+                { "value": "english", "label": "English" },
+                { "value": "spanish", "label": "Spanish" },
+                { "value": "french", "label": "French" },
+                { "value": "german", "label": "German" },
+                { "value": "other", "label": "Other" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationDetailsAgesServed",
+              "type": "radio",
+              "label": "All Ages Served",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationAgeRange",
+              "type": "checkbox",
+              "label": "Age Range",
+              "options": [
+                { "value": "0-5", "label": "0-5 years" },
+                { "value": "6-12", "label": "6-12 years" },
+                { "value": "13-17", "label": "13-17 years" },
+                { "value": "18-21", "label": "18-21 years" },
+                { "value": "22-59", "label": "22-59 years" },
+                { "value": "60+", "label": "60+ years" }
+              ],
+              "showIf": {
+                "field": "secondaryServiceLocationDetailsAgesServed",
+                "value": "no"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsAcceptingNewPatients",
+              "type": "radio",
+              "label": "Accepting New Patients",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsTDDTTY",
+              "type": "radio",
+              "label": "Is this location TDD/TTY equipped?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationDetailsTDDTTYNumber",
+              "type": "text",
+              "label": "TDDTTY Number",
+              "validation": {
+                "required": true
+              },
+              "showIf": {
+                "field": "secondaryServiceLocationDetailsTDDTTY",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsCountiesServed",
+              "type": "radio",
+              "label": "Counties Served",
+              "options": [
+                { "value": "all", "label": "All" },
+                { "value": "specific", "label": "Specific" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationDetailsSpecificCounties",
+              "type": "multiselect",
+              "label": "Specific Counties",
+              "options": [
+                {
+                  "value": "ALB",
+                  "label": "Albany County"
+                },
+                {
+                  "value": "BH",
+                  "label": "Big Horn County"
+                },
+                {
+                  "value": "CAMP",
+                  "label": "Campbell County"
+                },
+                {
+                  "value": "CARB",
+                  "label": "Carbon County"
+                },
+                {
+                  "value": "CONV",
+                  "label": "Converse County"
+                },
+                {
+                  "value": "CROOK",
+                  "label": "Crook County"
+                },
+                {
+                  "value": "FREM",
+                  "label": "Fremont County"
+                },
+                {
+                  "value": "GOS",
+                  "label": "Goshen County"
+                },
+                {
+                  "value": "HOT",
+                  "label": "Hot Springs County"
+                },
+                {
+                  "value": "JOHN",
+                  "label": "Johnson County"
+                },
+                {
+                  "value": "LAR",
+                  "label": "Laramie County"
+                },
+                {
+                  "value": "LINC",
+                  "label": "Lincoln County"
+                },
+                {
+                  "value": "NAT",
+                  "label": "Natrona County"
+                },
+                {
+                  "value": "NIO",
+                  "label": "Niobrara County"
+                },
+                {
+                  "value": "PARK",
+                  "label": "Park County"
+                },
+                {
+                  "value": "PLAT",
+                  "label": "Platte County"
+                },
+                {
+                  "value": "SHER",
+                  "label": "Sheridan County"
+                },
+                {
+                  "value": "SUB",
+                  "label": "Sublette County"
+                },
+                {
+                  "value": "SWEET",
+                  "label": "Sweetwater County"
+                },
+                {
+                  "value": "TETON",
+                  "label": "Teton County"
+                },
+                {
+                  "value": "UINTA",
+                  "label": "Uinta County"
+                },
+                {
+                  "value": "WASH",
+                  "label": "Washakie County"
+                },
+                {
+                  "value": "WES",
+                  "label": "Weston County"
+                }
+              ],
+              "showIf": {
+                "field": "secondaryServiceLocationDetailsCountiesServed",
+                "value": "specific"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsOpenTime",
+              "type": "radio",
+              "label": "Is this location open 24 hours?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "secondaryServiceLocationDetailsOfficeHours",
+              "type": "radio",
+              "label": "Are the office hours the same Monday through Friday?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ],
+              "showIf": {
+                "field": "secondaryServiceLocationDetailsOpenTime",
+                "value": "no"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsOfficeHoursStartTime",
+              "type": "time",
+              "label": "Office Hours Start Time",
+              "showIf": {
+                "field": "secondaryServiceLocationDetailsOfficeHours",
+                "value": "no"
+              }
+            },
+            {
+              "id": "secondaryServiceLocationDetailsEmergencyServicesAfterHours",
+              "type": "radio",
+              "label": "Does this location provide emergency services after standard business hours?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "retroactiveAdjustment",
+      "title": "Request Retroactive Adjustment",
+      "subsections": [
+        {
+          "id": "requestRetroactiveAdjustment",
+          "title": "Request Retroactive Adjustment",
+          "elements": [
+            {
+              "id": "isRetroactiveAdjustment",
+              "type": "radio",
+              "label": "Do you want to be approved retroactively?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "retroactiveAdjustmentJustification",
+              "type": "textarea",
+              "label": "Justification for retroactive adjustment",
+              "validation": {
+                "required": true,
+                "maxLength": 500
+              },
+              "showIf": {
+                "field": "isRetroactiveAdjustment",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "retroactiveAdjustmentDate",
+              "type": "date",
+              "label": "Requested retroactive Effective date",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "retroactiveAdjustmentOtherState",
+          "title": "Other Medicaid State",
+          "elements": [
+            {
+              "id": "isRetroactiveAdjustmentOtherState",
+              "type": "radio",
+              "label": "If you are an out-of-state provider, are you currently enrolled in Medicaid or CHIP in your home state?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "retroactiveAdjustmentOtherStateName",
+              "type": "select",
+              "label": "Other Medicaid State",
+              "options": [
+                { "value": "state1", "label": "State 1" },
+                { "value": "state2", "label": "State 2" },
+                { "value": "state3", "label": "State 3" }
+              ],
+              "showIf": {
+                "field": "isRetroactiveAdjustmentOtherState",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "retroactiveAdjustmentOtherStateProgram",
+              "type": "select",
+              "label": "State Program",
+              "options": [
+                { "value": "medicaid", "label": "Medicaid" },
+                { "value": "chip", "label": "CHIP" }
+              ],
+              "showIf": {
+                "field": "isRetroactiveAdjustmentOtherState",
+                "value": "yes"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ownershipInformation",
+      "title": "Ownership Information",
+      "subsections": [
+        {
+          "id": "ownershipInformation1",
+          "elements": [
+            {
+              "id": "isMultiStateProvider",
+              "type": "radio",
+              "label": "Have you ever had ownership in any organization that has billed, or is currently billing Medicare or Medicaid and public health program services within any state?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "multiStateProviderOwnershipTable",
+              "type": "table",
+              "columns": [
+                {
+                  "id": "businessName",
+                  "label": "Organization's Business Name",
+                  "type": "text"
+                },
+                {
+                  "id": "effectiveDate",
+                  "label": "Effective Date",
+                  "type": "date"
+                },
+                { "id": "endDate", "label": "End Date", "type": "date" },
+                { "id": "FEIN", "label": "FEIN", "type": "text" },
+                {
+                  "id": "program",
+                  "label": "Program",
+                  "type": "select",
+                  "options": [
+                    { "value": "medicaid", "label": "Medicaid" },
+                    { "value": "medicare", "label": "Medicare" }
+                  ]
+                },
+                {
+                  "id": "NPINumber",
+                  "label": "NPINumber",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "InputPattern": "##-########-##",
+                    "pattern": "^[1-2]d{1}-d{6}-d{2}$"
+                  }
+                },
+                {
+                  "id": "addressLine1",
+                  "label": "Address Line 1",
+                  "type": "text"
+                },
+                {
+                  "id": "addressLine2",
+                  "label": "Address Line 2",
+                  "type": "text"
+                },
+                { "id": "city", "label": "City", "type": "text" },
+                {
+                  "id": "state",
+                  "label": "State",
+                  "type": "select",
+                  "options": [
+                    { "value": "WY", "label": "Wyoming" },
+                    { "value": "CA", "label": "California" },
+                    { "value": "TX", "label": "Texas" },
+                    { "value": "NY", "label": "New York" },
+                    { "value": "FL", "label": "Florida" },
+                    { "value": "AZ", "label": "Arizona" }
+                  ]
+                },
+                { "id": "zip", "label": "Zip", "type": "text" }
+              ],
+              "showIf": {
+                "field": "isMultiStateProvider",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "isMultiStateProviderManagement",
+              "type": "radio",
+              "label": "Have you ever managed or directed any organization that has billed or is currently billing Medicare, Medicaid and public health or CHIP program services within any state?",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "multiStateProviderManagementTable",
+              "type": "table",
+              "columns": [
+                {
+                  "id": "businessName",
+                  "label": "Organization's Business Name",
+                  "type": "text"
+                },
+                {
+                  "id": "effectiveDate",
+                  "label": "Effective Date",
+                  "type": "date"
+                },
+                { "id": "endDate", "label": "End Date", "type": "date" },
+                { "id": "FEIN", "label": "FEIN", "type": "text" },
+                {
+                  "id": "program",
+                  "label": "Program",
+                  "type": "select",
+                  "options": [
+                    { "value": "medicaid", "label": "Medicaid" },
+                    { "value": "medicare", "label": "Medicare" }
+                  ]
+                },
+                {
+                  "id": "NPINumber",
+                  "label": "NPINumber",
+                  "type": "text",
+                  "validation": {
+                    "required": true,
+                    "InputPattern": "##-########-##",
+                    "pattern": "^[1-2]d{1}-d{6}-d{2}$"
+                  }
+                },
+                {
+                  "id": "addressLine1",
+                  "label": "Address Line 1",
+                  "type": "text"
+                },
+                {
+                  "id": "addressLine2",
+                  "label": "Address Line 2",
+                  "type": "text"
+                },
+                { "id": "city", "label": "City", "type": "text" },
+                {
+                  "id": "state",
+                  "label": "State",
+                  "type": "select",
+                  "options": [
+                    { "value": "WY", "label": "Wyoming" },
+                    { "value": "CA", "label": "California" },
+                    { "value": "TX", "label": "Texas" },
+                    { "value": "NY", "label": "New York" },
+                    { "value": "FL", "label": "Florida" },
+                    { "value": "AZ", "label": "Arizona" }
+                  ]
+                },
+                { "id": "zip", "label": "Zip", "type": "text" }
+              ],
+              "showIf": {
+                "field": "isMultiStateProviderManagement",
+                "value": "yes"
+              }
+            },
+            {
+              "id": "isMultiStateProviderController",
+              "type": "radio",
+              "label": "Do you have an ownership interest of 5% or greater in a subcontractor for your business or practice within any state? (A subcontractor is an individual, agency, or organization to which an applicant/provider has contracted or delegated some of its management functions)",
+              "options": [
+                { "value": "yes", "label": "Yes" },
+                { "value": "no", "label": "No" }
+              ]
+            },
+            {
+              "id": "multiStateProviderControllerTable",
+              "type": "table",
+              "columns": [
+                {
+                  "id": "businessName",
+                  "label": "SubContractor's Business Name",
+                  "type": "text"
+                },
+                {
+                  "id": "addressLine1",
+                  "label": "Address Line 1",
+                  "type": "text"
+                },
+                {
+                  "id": "addressLine2",
+                  "label": "Address Line 2",
+                  "type": "text"
+                },
+                { "id": "city", "label": "City", "type": "text" },
+                {
+                  "id": "state",
+                  "label": "State",
+                  "type": "select",
+                  "options": [
+                    { "value": "WY", "label": "Wyoming" },
+                    { "value": "CA", "label": "California" },
+                    { "value": "TX", "label": "Texas" },
+                    { "value": "NY", "label": "New York" },
+                    { "value": "FL", "label": "Florida" },
+                    { "value": "AZ", "label": "Arizona" }
+                  ]
+                },
+                { "id": "zip", "label": "Zip", "type": "text" }
+              ],
+              "showIf": {
+                "field": "isMultiStateProviderController",
+                "value": "yes"
+              }
+            }
+          ]
         }
       ]
     },
